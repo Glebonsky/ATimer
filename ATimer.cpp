@@ -1,10 +1,10 @@
-#include "GTimer.h"
+#include "ATimer.h"
 #include <Arduino.h>
 //#ifdef GTimerRealTime
 //  #include <DS1307.h>
 //#endif
   
-GTimer::GTimer(bool realTimeModule)
+ATimer::ATimer(bool realTimeModule)
 {
   _period = 0;
   _lastTime = 0;
@@ -14,7 +14,7 @@ GTimer::GTimer(bool realTimeModule)
 
 }
 
-void GTimer::start()
+void ATimer::start()
 {
   // if (_running) return;
   
@@ -22,12 +22,12 @@ void GTimer::start()
   _lastTime = millis();
 }
 
-void GTimer::setPeriod(unsigned long period)
+void ATimer::setPeriod(unsigned long period)
 {
   _period = period;
 }
 
-bool GTimer::check()
+bool ATimer::check()
 {
   if (!_running) return false;
 
@@ -40,7 +40,7 @@ bool GTimer::check()
   return false;
 }
 
-void GTimer::stop()
+void ATimer::stop()
 {
   _running = false;
 }
