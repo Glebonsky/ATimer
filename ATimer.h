@@ -1,3 +1,5 @@
+#pragma once
+
 class ATimer
 {
   unsigned long _period;
