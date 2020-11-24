@@ -5,7 +5,7 @@ class UniversalTimer
 public:
     explicit UniversalTimer(unsigned long interval);
     void start();
-    void setPeriod(unsigned long interval);
+    void setInterval(unsigned long interval);
     bool timeout();   
     void stop();
 

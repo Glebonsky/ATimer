@@ -13,7 +13,7 @@ void UniversalTimer::start()
     _lastTime = millis();
 }
 
-void UniversalTimer::setPeriod(unsigned long interval)
+void UniversalTimer::setInterval(unsigned long interval)
 {
     _interval = interval;
 }
