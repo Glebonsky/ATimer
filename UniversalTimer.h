@@ -6,7 +6,7 @@ public:
     explicit UniversalTimer(unsigned long interval);
     void start();
     void setPeriod(unsigned long interval);
-    bool check();   
+    bool timeout();   
     void stop();
 
 private:

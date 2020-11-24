@@ -18,7 +18,7 @@ void UniversalTimer::setPeriod(unsigned long interval)
     _interval = interval;
 }
 
-bool UniversalTimer::check()
+bool UniversalTimer::timeout()
 {
     if (!_running) return false;
 
