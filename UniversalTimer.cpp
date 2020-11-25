@@ -1,7 +1,7 @@
 #include "UniversalTimer.h"
 
 //returns millis from program start
-unsigned long millis();
+unsigned long millisFromStart();
 
 UniversalTimer::UniversalTimer(unsigned long interval)
     : _interval(interval)
@@ -10,7 +10,7 @@ UniversalTimer::UniversalTimer(unsigned long interval)
 void UniversalTimer::start()
 {
     _running = true;
-    _lastTime = millis();
+    _lastTime = millisFromStart();
 }
 
 void UniversalTimer::setInterval(unsigned long interval)
@@ -22,9 +22,10 @@ bool UniversalTimer::timeout()
 {
     if (!_running) return false;
 
-    if (millis() - _lastTime >= _interval)
+    auto currentTime = millisFromStart();
+    if (currentTime - _lastTime >= _interval)
     {
-        _lastTime = millis(); 
+        _lastTime = currentTime; 
         return true;
     }
 
@@ -38,3 +39,8 @@ void UniversalTimer::stop()
 
 
 #include <Arduino.h>
+
+unsigned long millisFromStart()
+{
+    return millis();
+}
