@@ -44,7 +44,8 @@ unsigned long milliseconds()
 {
     struct timespec now;
     timespec_get(&now, TIME_UTC);
-    return now.tv_sec * 1000ul + now.tv_nsec / 1000000ul;
+    time_t fiftyYearsInSecs = 1576800000;
+    return (now.tv_sec - fiftyYearsInSecs) * 1000ul + now.tv_nsec / 1000000ul;
 }
 
 
