@@ -1,7 +1,7 @@
 #include "universaltimer.h"
 
-//returns millis from program start
-unsigned long millisFromStart();
+//returns millis from fixed time point
+unsigned long milliseconds();
 
 UniversalTimer::UniversalTimer(unsigned long interval)
     : _interval(interval)
@@ -10,7 +10,7 @@ UniversalTimer::UniversalTimer(unsigned long interval)
 void UniversalTimer::start()
 {
     _running = true;
-    _lastTime = millisFromStart();
+    _lastTime = milliseconds();
 }
 
 void UniversalTimer::setInterval(unsigned long interval)
@@ -22,7 +22,7 @@ bool UniversalTimer::timeout()
 {
     if (!_running) return false;
 
-    auto currentTime = millisFromStart();
+    auto currentTime = milliseconds();
     if (currentTime - _lastTime >= _interval)
     {
         _lastTime = currentTime; 
@@ -38,9 +38,21 @@ void UniversalTimer::stop()
 }
 
 
+#ifdef PC
+#include <time.h>
+unsigned long milliseconds()
+{
+    struct timespec now;
+    timespec_get(&now, TIME_UTC);
+    return now.tv_sec * 1000ul + now.tv_nsec / 1000000ul;
+}
+
+
+#else
 #include <Arduino.h>
 
-unsigned long millisFromStart()
+unsigned long milliseconds()
 {
     return millis();
 }
+#endif
