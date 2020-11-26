@@ -1,4 +1,4 @@
-#include "UniversalTimer.h"
+#include "universaltimer.h"
 
 //returns millis from program start
 unsigned long millisFromStart();
